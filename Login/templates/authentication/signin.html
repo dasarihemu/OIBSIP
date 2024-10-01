@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: whitesmoke;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .alert{
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            max-width: 400px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .alert-error{
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .alert-button{
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: inherit;
+        }
+        form{
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h3{
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label{
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #0056b3;
+        }
+        .close{
+            font-size: 18px;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/signin" method="post">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong> {{ message | safe }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+
+        <h3>signin</h3>
+        {%csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required>
+        <br>
+
+        <button type="submit">Signin</button>
+    </form>
+</body>
+
+</html>
